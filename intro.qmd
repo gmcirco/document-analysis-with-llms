@@ -1,0 +1,52 @@
+# Introduction
+
+This is a book about analyzing documents using LLMs.
+
+This book is designed with realistic production workflows in mind. What that means, in a practical sense, is that the
+
+## My Philosophy
+
+Most of my work falls into a more "un-sexy" region of AI: document processing. In my job I have worked on several
+
+My goal of this book is to give you my unvarnished opinion and experience on applying LLMs to document processing. At the time of writing this book AI boosterism is especially high, and it seems almost daily that a new tool emerges to solve problems. In my experience actually applying LLMs to non-trivial workflows is actually incredibly difficult, and requires a great degree of planning and architecting to pull off. It's easy to brag about your cool tool, but its much harder to embed it in a legacy business process, or on a job where mistakes will cost the company actual money.
+
+I've tried to keep the examples as simple and library-agnostic as possible. I've kept most of the code limited to libraries for helping with image processing. I don't use frameworks like langchain because, in my experience, they tend to introduce overhead to the code and obscure base-level functionality with the LLM service. I find it much easier to write at a "lower" level and if there ia a good reason, transition the workflow to a more complex one.
+
+You don't necessarily have to agree with me, or with my approaches. Nothing in this book would stop you from using it in a Pydantic AI, or langchain, or some complicated agentic workstream. Think of the examples here as building blocks for your work.
+
+### AI Disclosure
+
+It is my policy to be transparent about which elements of this book are built with AI assistance and which are not. Specifically:
+
+-   Every single word written in this book is my own, and is *not* AI generated.
+-   All code is built with AI-assistance, with my own oversight[^1].
+-   AI is used to proofread the book and flag issues for me to manually review and fix.
+
+[^1]: To be more specific, my process typically involves me manually writing stubs for functions with minimal functionality. I then use Codex in plan mode to refine the original functions into a cleaner, more integrated set. I do not let AI create functionality that I have not planned myself.
+
+Hadley Wickham (of R `tidyverse` fame) has a good, thoughtful post on [what is slop](https://substack.hadley.nz/p/what-is-slop?publication_id=1819765&post_id=221787545&isFreemail=true&r=2lkd4j&triedRedirect=true). While it is absolutely true that you could have Claude generate an entire book for you about document analysis, it would contain zero effort, zero thought, and zero experience rooted in the real world:
+
+> I think this is one of the most dangerous features of AI: it trashes our existing heuristics for effort and trust. It used to be that making a slick video or writing a 40-page document implied that you cared enough to at least put in the effort, but now those signals are gone. It’s becoming increasingly difficult to tell what work represents genuine human effort and caring, and what work is the result of a few minutes of prompting and a few dollars of token spend.
+
+## Required Tools for the Book
+
+To assist with
+
+## Using the Book
+
+This book is designed with both beginners and experienced python users. For use in the book, many functions are pre-defined for your use to simplify getting started. The goal of this book is *practical* document analysis, and not necessarily in-depth code examples. As you will see, much of the actual value is in the workflow and logic, and less so in the code itself. That's not to say that the code isn't important, however given that LLMs are very apt in writing for users, I feel that my value here is explaining problems I have worked out in my own job.
+
+For users interested in going deeper into the functions, each chapter will contain optional "going deeper" sections that go into more detail on the how and why of the actual python code.
+
+::: {.callout-note collapse="true" appearance="minimal"}
+## Going deeper: How `pdf_to_png` works
+
+`pdf_to_png` opens the PDF, renders each page at 150 DPI, and returns the images as PNG bytes.
+
+``` python
+def pdf_to_png(pdf_path: str) -> list[bytes]:
+    """Render each PDF page as PNG bytes, in page order."""
+    with pymupdf.open(pdf_path) as pdf:
+        return [page.get_pixmap(dpi=150).tobytes("png") for page in pdf]
+```
+:::

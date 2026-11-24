@@ -1,0 +1,13 @@
+# Multi-Step Workflows
+
+In the first two chapters we covered some of the basic elements of document processing: data extraction, document classification, and document segmentation. At a core level, document processing relies on identifying what kind of document is being processed, then applying the correct tasks to it.
+
+In this chapter we'll expand on this by combining the first two chapters into what I am calling "multi-step" workflows. You may more often hear these referred to as "agentic" workflows, but the ideas are the same. Essentially we split a long list of tasks into sub-tasks, then assign them to different AI-handled jobs. To illustrate, let's look at a more complicated invoice example:
+
+As opposed to our first example, this packet contains 26 pages which include: 1. A heading document outlining a scope of work. 2. Three pages of legal-ish looking documents. 3. Eight pages of tariff schedules and part cost references. 4. Thirteen pages of historical filed invoices.
+
+Suppose our goal is to process, in bulk, many packets that may or may not contain invoices. We want to extract some information about those invoices and store the information separately. How might we go about this?
+
+## Sketching a flow
+
+One way to help simplify this is create a small flow diagram. Now, for a problem of this scale, it is a bit overkill, but the exercise should help illustrate how we can break down these multi-stage problems into definable tasks.

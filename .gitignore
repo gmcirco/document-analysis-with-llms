@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local secrets and notebook state
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+
+# Quarto build output
+/.quarto/
+/_book/
+/index.tex
+**/*.quarto_ipynb
+
+# Other stuff
+agents.md

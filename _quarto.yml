@@ -1,0 +1,24 @@
+project:
+  type: book
+
+book:
+  title: "Practical Document Analysis with LLMs"
+  author: "Giovanni Circo, Ph.D."
+  date: "10/23/2026"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - data-extraction.qmd
+    - doc-classification.qmd
+    - multi-step-workflow.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+  pdf:
+    documentclass: scrreprt
